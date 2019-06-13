@@ -30,6 +30,7 @@ interface Options {
   passphrase?: string
   endPort?: number
   endHost: string
+  tryKeyboard?: boolean
 }
 
 interface ForwardingOptions {
@@ -134,7 +135,8 @@ class SSHConnection {
       const options = {
         host,
         username: this.options.username,
-        privateKey: this.options.privateKey
+        privateKey: this.options.privateKey,
+        tryKeyboard: this.options.tryKeyboard
       }
       if (this.options.agentForward) {
         options['agentForward'] = true
